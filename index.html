@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Tracker Application</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container" role="main" aria-label="Advanced Task Tracker Application">
+        <h1>Task Tracker Application</h1>
+        <form id="taskForm" aria-label="Add or Edit Task Form">
+            <div>
+                <label for="titleInput">Title <sup aria-label="required">*</sup></label>
+                <input type="text" id="titleInput" name="title" placeholder="Task title" required />
+            </div>
+            <div>
+                <label for="categoryInput">Category</label>
+                <input type="text" id="categoryInput" name="category" placeholder="e.g. Work, Personal" />
+            </div>
+            <div>
+                <label for="priorityInput">Priority</label>
+                <select id="priorityInput" name="priority">
+                    <option value="low">Low</option>
+                    <option value="medium" selected>Medium</option>
+                    <option value="high">High</option>
+                </select>
+            </div>
+            <div>
+                <label for="statusInput">Status</label>
+                <select id="statusInput" name="status">
+                    <option value="not-started" selected>Not Started</option>
+                    <option value="in-progress">In Progress</option>
+                    <option value="completed">Completed</option>
+                </select>
+            </div>
+            <div>
+                <label for="startDateInput">Start Date</label>
+                <input type="date" id="startDateInput" name="startDate" />
+            </div>
+            <div>
+                <label for="dueDateInput">Due Date</label>
+                <input type="date" id="dueDateInput" name="dueDate" />
+            </div>
+            <div style="grid-column: span 2;">
+                <label for="descriptionInput">Description</label>
+                <textarea id="descriptionInput" name="description" placeholder="Details about the task..."></textarea>
+            </div>
+            <button type="submit" id="submitBtn" aria-live="polite">Add Task</button>
+        </form>
+
+        <div class="filters" aria-label="Task List Filters">
+            <select id="filterStatus" aria-label="Filter by status">
+                <option value="all" selected>All Statuses</option>
+                <option value="not-started">Not Started</option>
+                <option value="in-progress">In Progress</option>
+                <option value="completed">Completed</option>
+            </select>
+            <select id="filterPriority" aria-label="Filter by priority">
+                <option value="all" selected>All Priorities</option>
+                <option value="high">High</option>
+                <option value="medium">Medium</option>
+                <option value="low">Low</option>
+            </select>
+            <select id="filterCategory" aria-label="Filter by category">
+                <option value="all" selected>All Categories</option>
+            </select>
+        </div>
+
+        <div id="tasksContainer" aria-live="polite" aria-relevant="additions removals" aria-atomic="true"></div>
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>
