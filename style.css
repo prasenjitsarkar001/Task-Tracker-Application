@@ -1,0 +1,266 @@
+body {
+      font-family: Arial, sans-serif;
+      background: #eef2f7;
+      margin: 0; padding: 20px;
+      display: flex; justify-content: center;
+    }
+    .container {
+      background: white;
+      width: 600px;
+      border-radius: 8px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+      padding: 20px;
+    }
+    h1 {
+      margin-top: 0;
+      text-align: center;
+      color: #333;
+    }
+    form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+    form > div {
+      display: flex;
+      flex-direction: column;
+    }
+    label {
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: #555;
+    }
+    input[type="text"],
+    input[type="date"],
+    select,
+    textarea {
+      padding: 8px;
+      border: 1.5px solid #bbb;
+      border-radius: 5px;
+      font-size: 14px;
+      resize: vertical;
+      font-family: Arial, sans-serif;
+      transition: border-color 0.2s;
+    }
+    input[type="text"]:focus,
+    input[type="date"]:focus,
+    select:focus,
+    textarea:focus {
+      border-color: #2a82f7;
+      outline: none;
+    }
+    textarea {
+      grid-column: span 2;
+      min-height: 60px;
+    }
+    button {
+      grid-column: span 2;
+      padding: 12px;
+      background: #2a82f7;
+      border: none;
+      color: white;
+      font-weight: 700;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background 0.3s;
+      user-select: none;
+    }
+    button:hover {
+      background: #1765e1;
+    }
+    .filters {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 15px;
+      gap: 10px;
+    }
+    .filters select {
+      flex: 1;
+      padding: 7px;
+      border-radius: 5px;
+      border: 1.5px solid #bbb;
+      font-size: 14px;
+      font-family: Arial, sans-serif;
+    }
+    #tasksContainer {
+      max-height: 400px;
+      overflow-y: auto;
+    }
+    .task-card {
+      border-left: 8px solid;
+      background: #fafafa;
+      margin-bottom: 12px;
+      border-radius: 5px;
+      padding: 12px 20px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      display: flex;
+      flex-direction: column;
+
+      /* Pulse background of task cards */
+      animation: backgroundPulse 6s ease-in-out infinite;
+    }
+    .task-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .task-title {
+      font-weight: 700;
+      font-size: 18px;
+      color: #222;
+      word-break: break-word;
+    }
+    .task-category {
+      font-size: 13px;
+      font-style: italic;
+      color: #777;
+      margin-left: 10px;
+    }
+    .task-desc {
+      margin: 8px 0 10px 0;
+      font-size: 14px;
+      line-height: 1.3;
+      color: #444;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+    .task-meta {
+      font-size: 13px;
+      color: #555;
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .meta-label {
+      font-weight: 600;
+    }
+    /* Priority colors with animation */
+    .priority-high {
+      color: #d93025;
+      animation: borderPulseHigh 3s ease-in-out infinite;
+    }
+    .priority-medium {
+      color: #f9ab00;
+      animation: borderPulseMedium 3s ease-in-out infinite;
+    }
+    .priority-low {
+      color: #188038;
+      animation: borderPulseLow 3s ease-in-out infinite;
+    }
+    /* Status text styles */
+    .status-not-started {
+      color: #757575;
+    }
+    .status-in-progress {
+      color: #1765e1;
+    }
+    .status-completed {
+      color: #1e7e34;
+      text-decoration: line-through;
+    }
+    /* Overdue */
+    .overdue {
+      color: #d93025;
+      font-weight: 700;
+    }
+    .task-actions {
+      margin-top: 10px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .task-actions button {
+      padding: 6px 14px;
+      font-size: 14px;
+      border-radius: 5px;
+      border: none;
+      cursor: pointer;
+      user-select: none;
+      transition: background-color 0.35s ease, color 0.35s ease;
+    }
+    .task-actions button:hover {
+      filter: brightness(1.15);
+    }
+    .edit-btn {
+      background: #2a82f7;
+      color: white;
+    }
+    .edit-btn:hover {
+      background: #1765e1;
+    }
+    .delete-btn {
+      background: #d93025;
+      color: white;
+    }
+    .delete-btn:hover {
+      background: #a5221a;
+    }
+    /* Status button with animated background color cycling */
+    .status-btn {
+      background: #6c757d;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      padding: 6px 12px;
+      cursor: pointer;
+      animation: statusCycleNotStarted 4s ease-in-out infinite;
+      user-select: none;
+    }
+    .status-btn.not-started {
+      animation-name: statusCycleNotStarted;
+    }
+    .status-btn.in-progress {
+      animation-name: statusCycleInProgress;
+    }
+    .status-btn.completed {
+      animation-name: statusCycleCompleted;
+    }
+    /* Pulsing Add/Update submit button */
+    button#submitBtn {
+      animation: pulseSubmitBtn 5s ease-in-out infinite;
+    }
+
+    /* Animations */
+
+    /* Border pulse for priority */
+    @keyframes borderPulseHigh {
+      0%, 100% { border-left-color: #d93025; }
+      50% { border-left-color: #ff5c5c; }
+    }
+    @keyframes borderPulseMedium {
+      0%, 100% { border-left-color: #f9ab00; }
+      50% { border-left-color: #ffcc33; }
+    }
+    @keyframes borderPulseLow {
+      0%, 100% { border-left-color: #188038; }
+      50% { border-left-color: #44bb5f; }
+    }
+
+    /* Status button background cycling */
+    @keyframes statusCycleNotStarted {
+      0%, 100% { background-color: #6c757d; }
+      50% { background-color: #9aa3a8; }
+    }
+    @keyframes statusCycleInProgress {
+      0%, 100% { background-color: #1765e1; }
+      50% { background-color: #3a8cff; }
+    }
+    @keyframes statusCycleCompleted {
+      0%, 100% { background-color: #1e7e34; }
+      50% { background-color: #47b757; }
+    }
+
+    /* Background pulse on task card */
+    @keyframes backgroundPulse {
+      0%, 100% { background-color: #fafafa; }
+      50% { background-color: #f0f6ff; }
+    }
+
+    /* Pulsing submit button */
+    @keyframes pulseSubmitBtn {
+      0%, 100% { background-color: #2a82f7; }
+      50% { background-color: #1a60c9; }
+    } 
